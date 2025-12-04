@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TURBO: KETCHUP – Christmas Colours & Characters</title>
+  <link rel="stylesheet" href="ketchup.css">
+</head>
+<body>
+  <div class="snow-overlay"></div>
+
+  <main class="ketchup-app">
+    <header class="ketchup-header">
+      <h1>TURBO: KETCHUP 🎄</h1>
+      <p class="subtitle">Christmas Colours & Characters – No excuses! 😄</p>
+      <p id="overall-progress" class="overall-progress">
+        Levels completed: 0/10 | Best: 0%
+      </p>
+    </header>
+
+    <section class="ketchup-controls">
+      <div class="level-select">
+        <label for="levelSelect">Choose level:</label>
+        <select id="levelSelect"></select>
+        <button id="startLevelBtn">Start Level</button>
+      </div>
+
+      <div class="accessibility">
+        <span>Accessibility options:</span>
+        <button id="readSpanishBtn" type="button">🔈 Read Spanish</button>
+        <button id="voiceInputBtn" type="button">🎤 Answer by voice</button>
+      </div>
+
+      <div class="status-bar">
+        <span id="timer">Time: 0.0s</span>
+        <span id="questionCounter">Question: 0/0</span>
+        <span id="scorePreview">Score: 0/0</span>
+      </div>
+    </section>
+
+    <section class="ketchup-game">
+      <div class="question-panel">
+        <h2 id="levelName">Choose a level to begin</h2>
+        <p id="questionText" class="question-text">When you start, your question will appear here.</p>
+      </div>
+
+      <div class="answer-panel">
+        <label for="answerInput">Type your answer in Spanish (no pronouns needed):</label>
+        <input type="text" id="answerInput" autocomplete="off">
+        <div class="answer-buttons">
+          <button id="checkAnswerBtn" type="button">✅ Check</button>
+          <button id="nextQuestionBtn" type="button" disabled>➡️ Next</button>
+        </div>
+      </div>
+
+      <div id="feedback" class="feedback"></div>
+      <div id="resultSummary" class="result-summary"></div>
+
+      <div class="bottom-buttons">
+        <button id="repeatLevelBtn" type="button" disabled>🔁 Repeat level</button>
+        <button id="backHomeHintBtn" type="button">🏠 Back to Jump Page</button>
+      </div>
+    </section>
+
+    <footer class="ketchup-footer">
+      <p>
+        Progress is saved automatically. The Jump Page can read it from
+        <code>localStorage["turbo_ketchup_progress"]</code>.
+      </p>
+    </footer>
+  </main>
+
+  <script src="ketchup.js"></script>
+</body>
+</html>
