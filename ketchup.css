@@ -1,0 +1,295 @@
+:root {
+  --bg-main: rgba(255, 255, 255, 0.9);
+  --accent: #c62828;
+  --accent-soft: #ffebee;
+  --text-main: #222;
+  --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Big Synge Street crest watermark behind everything */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #fef8f0 0, #f0f8ff 40%, #e3f2fd 90%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("PATH/TO/YOUR/SYNGE-STREET-CREST.png"); /* <-- change this path */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60vmin;
+  opacity: 0.22; /* strong but still watermark */
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* gentle snow overlay */
+.snow-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 0, transparent 60px),
+    radial-gradient(circle, rgba(255,255,255,0.6) 0, transparent 40px);
+  background-size: 200px 200px, 300px 300px;
+  animation: snowDrift 22s linear infinite;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+@keyframes snowDrift {
+  from { transform: translateY(-40px); }
+  to   { transform: translateY(40px); }
+}
+
+.ketchup-app {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: var(--bg-main);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(5px);
+}
+
+.ketchup-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ketchup-header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+
+.subtitle {
+  margin: 6px 0 2px;
+  font-size: 0.98rem;
+}
+
+.overall-progress {
+  margin-top: 6px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.ketchup-controls {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.level-select {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.level-select select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  min-width: 180px;
+}
+
+.level-select button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.level-select button:hover {
+  filter: brightness(1.05);
+}
+
+.accessibility {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.9rem;
+  align-items: center;
+}
+
+.accessibility button {
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: white;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.accessibility button:hover {
+  background: var(--accent-soft);
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  background: #fafafa;
+  border-radius: 10px;
+  border: 1px dashed #ddd;
+}
+
+.ketchup-game {
+  margin-top: 8px;
+}
+
+.question-panel {
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff8e1;
+  border: 1px solid #ffecb3;
+}
+
+.question-panel h2 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+}
+
+.question-text {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.answer-panel {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #e3f2fd;
+  border: 1px solid #bbdefb;
+}
+
+.answer-panel label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+#answerInput {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #90caf9;
+  box-sizing: border-box;
+}
+
+.answer-buttons {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.answer-buttons button {
+  flex: 1 1 120px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#checkAnswerBtn {
+  background: #2e7d32;
+  color: #fff;
+}
+
+#nextQuestionBtn {
+  background: #1565c0;
+  color: #fff;
+}
+
+.answer-buttons button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.feedback {
+  margin-top: 10px;
+  min-height: 24px;
+  font-weight: 600;
+}
+
+.feedback.correct {
+  color: #2e7d32;
+}
+
+.feedback.incorrect {
+  color: #c62828;
+}
+
+.result-summary {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f3e5f5;
+  border: 1px solid #e1bee7;
+  font-size: 0.95rem;
+}
+
+.bottom-buttons {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bottom-buttons button {
+  flex: 1 1 150px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #bbb;
+  background: #fff;
+  cursor: pointer;
+}
+
+.bottom-buttons button:hover {
+  background: #f5f5f5;
+}
+
+.ketchup-footer {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+code {
+  background: #eee;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .ketchup-app {
+    margin: 8px;
+    padding: 12px;
+  }
+
+  .ketchup-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .status-bar {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
